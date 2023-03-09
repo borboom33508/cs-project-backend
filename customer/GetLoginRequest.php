@@ -8,7 +8,7 @@ $cus_email = $_GET['cus_email'];
 $cus_phone = $_GET['cus_phone'];
 $cus_password = $_GET['cus_password'];
 
-$sql = "SELECT * FROM customer WHERE (cus_email = '" . $cus_email . "' || cus_phone = '" . $cus_phone . "') 
+$sql = "SELECT cus_id FROM customer WHERE (cus_email = '" . $cus_email . "' || cus_phone = '" . $cus_phone . "') 
 && cus_password = '" . $cus_password . "'";
 
 $result = mysqli_query($conn, $sql);
