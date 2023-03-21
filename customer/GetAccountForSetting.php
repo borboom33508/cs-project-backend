@@ -6,14 +6,14 @@ $request = array();
 
 $cus_id = $_GET['cus_id'];
 
-$sql = "SELECT cus_name, cus_phone, cus_email, cus_credit FROM customer WHERE cus_id = '" . $cus_id . "' ";
+$sql = "SELECT cus_name, cus_phone, cus_email, cus_credit, cus_picture FROM customer WHERE cus_id = '" . $cus_id . "' ";
 
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while ($row = mysqli_fetch_assoc($result)) {
-        $request = array('cus_name' => $row["cus_name"], 'cus_phone' => $row["cus_phone"], 'cus_email' => $row["cus_email"], 'cus_credit' => $row["cus_credit"]);
+        $request = array('cus_name' => $row["cus_name"], 'cus_phone' => $row["cus_phone"], 'cus_email' => $row["cus_email"], 'cus_credit' => $row["cus_credit"], 'cus_picture' => $row["cus_picture"]);
     }
     $response['success'] = true;
     $response['request'] = $request;
