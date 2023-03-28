@@ -4,16 +4,16 @@ include "../DbConnect.php";
 $response = array();
 $request = array();
 
-$laundry_id = $_GET['laundry_id'];
+$cus_id = $_GET['cus_id'];
 
-$sql = "SELECT laundry_credit  FROM laundry WHERE laundry_id = '" . $laundry_id . "' ";
+$sql = "SELECT cus_placeName, cus_lat, cus_lng  FROM customer WHERE cus_id = '" . $cus_id . "' ";
 
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while ($row = mysqli_fetch_assoc($result)) {
-        $request = array('laundry_credit' => $row["laundry_credit"]);
+        $request = array('cus_placeName' => $row["cus_placeName"], 'cus_lat' => $row["cus_lat"], 'cus_lng' => $row["cus_lng"]);
     }
     $response['success'] = true;
     $response['request'] = $request;
