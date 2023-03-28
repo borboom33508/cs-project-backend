@@ -5,7 +5,7 @@ $response = array();
 $request = array();
 
 $laundry_email = $_GET['laundry_email'];
-$laundry_phone = $_GET['cus_phone'];
+$laundry_phone = $_GET['laundry_phone'];
 $laundry_password = $_GET['laundry_password'];
 
 $sql = "SELECT laundry_id FROM laundry WHERE (laundry_email = '" . $laundry_email . "' || laundry_phone = '" . $laundry_phone . "') 
