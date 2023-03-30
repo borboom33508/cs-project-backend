@@ -9,7 +9,7 @@ $order_id = $_GET['order_id'];
 $sql = "SELECT `orderdetail`.`order_detail_id`,`order`.`order_status`, `order`.`order_payment`, 
 `orderdetail`.`order_service_type`, `orderdetail`.`order_washingKg`, `orderdetail`.`order_isReed`, 
 `orderdetail`.`order_description`, `orderdetail`.`order_fixedCost_by_laundry`, `laundry`.`laundry_hours`,
-`orderdetail`.`order_firstRideCost`, `orderdetail`.`order_secondRideCost`,
+`orderdetail`.`order_firstRideCost`, `orderdetail`.`order_secondRideCost`, `orderdetail`.`order_finalCost`,
 `customer`.`cus_name`, `customer`.`cus_phone` FROM `order` 
 INNER JOIN `orderdetail` ON `order`.`order_detail_id` = `orderdetail`.`order_detail_id`
 INNER JOIN `laundry` ON `order`.`laundry_id` = `laundry`.`laundry_id`
@@ -28,7 +28,7 @@ if (mysqli_num_rows($result) > 0) {
             'order_description' => $row["order_description"], 'order_fixedCost_by_laundry' => $row["order_fixedCost_by_laundry"], 
             'laundry_hours' => $row["laundry_hours"], 'order_firstRideCost' => $row["order_firstRideCost"], 
             'order_secondRideCost' => $row["order_secondRideCost"], 'cus_name' => $row["cus_name"], 
-            'cus_phone' => $row["cus_phone"]
+            'cus_phone' => $row["cus_phone"], 'order_finalCost' => $row["order_finalCost"]
         );
     }
     $response['success'] = true;

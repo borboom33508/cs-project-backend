@@ -7,7 +7,7 @@ $request = array();
 $laundry_id = $_GET['laundry_id'];
 
 $sql = "SELECT `order_id`, `order_status`, `order_payment` FROM `order` 
-WHERE `laundry_id` = '" . $laundry_id . "' ORDER BY order_timestamp DESC";
+WHERE `laundry_id` = '" . $laundry_id . "' ORDER BY `order_timestamp` DESC";
 
 $result = mysqli_query($conn, $sql);
 
