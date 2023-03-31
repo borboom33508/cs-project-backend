@@ -10,7 +10,8 @@ $order_payment = $_POST['order_payment'];
 $order_finalCost = $_POST['order_finalCost'];
 
 if ($order_finalCost) {
-    $sql =  "UPDATE `order` SET `order_status` = '" . $order_status . "', `order_payment` = '" . $order_payment . "' WHERE `order_id` = '" . $order_id . "'";
+    $sql =  "UPDATE `order` SET `order_status` = '" . $order_status . "', `order_payment` = '" . $order_payment . "', 
+    `order_timestamp` = now() WHERE `order_id` = '" . $order_id . "'";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
@@ -26,7 +27,7 @@ if ($order_finalCost) {
         $response['success'] = false;
     }
 } else {
-    $sql =  "UPDATE `order` SET `order_status` = '" . $order_status . "' WHERE `order_id` = '" . $order_id . "'";
+    $sql =  "UPDATE `order` SET `order_status` = '" . $order_status . "', `order_timestamp` = now() WHERE `order_id` = '" . $order_id . "'";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
@@ -38,3 +39,4 @@ if ($order_finalCost) {
 
 echo json_encode($response);
 mysqli_close($conn);
+?>

@@ -13,8 +13,8 @@ $tx_paymentType =$_POST['tx_paymentType'];
 $tx_amount =$_POST['tx_amount'];
 
 
-$sql = "UPDATE `order` SET `order_status` = '" . $order_status . "', `order_payment` = '" . $order_payment . "'
-WHERE `order_id` = '" . $order_id . "'";
+$sql = "UPDATE `order` SET `order_status` = '" . $order_status . "', `order_payment` = '" . $order_payment . "', 
+`order_timestamp` = now() WHERE `order_id` = '" . $order_id . "'";
 
 $result = mysqli_query($conn, $sql);
 
