@@ -7,7 +7,8 @@ $request = array();
 $order_status = $_GET['order_status'];
 
 $sql = "SELECT `order`.`order_id`, `order`.`order_source_location1`, `order`.`order_dest_location1`, 
-`orderdetail`.`order_firstRideCost`, `laundry`.`laundry_name`, `customer`.`cus_placeName` FROM `order` 
+`orderdetail`.`order_firstRideCost`, `laundry`.`laundry_name`, `laundry`.`laundry_phone`, 
+`customer`.`cus_placeName`, `customer`.`cus_phone` FROM `order` 
 INNER JOIN `orderdetail` ON `order`.`order_detail_id` = `orderdetail`.`order_detail_id`
 INNER JOIN `laundry` ON `order`.`laundry_id` = `laundry`.`laundry_id`
 INNER JOIN `customer` ON `order`.`cus_id` = `customer`.`cus_id`
@@ -20,7 +21,8 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $request[] = array('order_id' => $row["order_id"], 'order_source_location1' => $row["order_source_location1"], 
         'order_dest_location1' => $row["order_dest_location1"], 'order_firstRideCost' => $row["order_firstRideCost"],
-        'laundry_name' => $row["laundry_name"], 'cus_placeName' => $row["cus_placeName"]);
+        'laundry_name' => $row["laundry_name"], 'laundry_phone' => $row["laundry_phone"], 
+        'cus_placeName' => $row["cus_placeName"], 'cus_phone' => $row["cus_phone"]);
     }
     $response['success'] = true;
     $response['request'] = $request;
