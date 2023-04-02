@@ -31,6 +31,32 @@ if ($order_finalCost) {
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
+        if ($order_status == "เสร็จสิ้นรายการ") {
+            $laundry_id = $_POST['laundry_id'];
+            $tx_paymentType = $_POST['tx_paymentType'];
+            $tx_amount = $_POST['tx_amount'];
+
+            $sql = "INSERT INTO `transaction`(`laundry_id`, `tx_paymentType`, `tx_amount`)
+            VALUES ('" . $laundry_id . "', '" . $tx_paymentType . "', '" . $tx_amount . "')";
+
+            $result = mysqli_query($conn, $sql);
+
+            if ($result) {
+                $response['successTransaction'] = true;
+            } else {
+                $response['successTransaction'] = false;
+            }
+
+            $sql = "UPDATE laundry SET laundry_credit = laundry_credit + '" . $tx_amount . "' 
+            WHERE laundry_id = '" . $laundry_id . "'";
+            $result = mysqli_query($conn, $sql);
+
+            if ($result) {
+                $response['successUpdateCredit'] = true;
+            } else {
+                $response['successUpdateCredit'] = false;
+            }
+        }
         $response['success'] = true;
     } else {
         $response['success'] = false;
