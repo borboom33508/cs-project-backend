@@ -55,3 +55,4 @@ if (move_uploaded_file($photo_tmp_name, SITE_ROOT . $upload_name)) {
 
 echo json_encode($response);
 mysqli_close($conn);
+?>
