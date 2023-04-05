@@ -16,21 +16,37 @@ $order_secondRideCost = $_POST['order_secondRideCost'];
 $order_status = $_POST['order_status'];
 $order_source_location = $_POST['order_source_location'];
 $order_dest_location = $_POST['order_dest_location'];
+$order_shirt = $_POST['order_shirt'];
+$order_tshirt = $_POST['order_tshirt'];
+$order_sLeg = $_POST['order_sLeg'];
+$order_lLeg = $_POST['order_lLeg'];
+$order_jean = $_POST['order_jean'];
+$order_underwear = $_POST['order_underwear'];
+$order_sock = $_POST['order_sock'];
+$order_other = $_POST['order_other'];
 
 if ($order_isReed) {
     $sql = "INSERT INTO `orderdetail`(`laundry_id`, `cus_id`, `order_service_type`, 
     `order_washingKg`, `order_isReed`, `order_description`, `order_fixedCost_by_laundry`, 
-    `order_firstRideCost`, `order_secondRideCost`) 
+    `order_firstRideCost`, `order_secondRideCost`, `order_shirt`, `order_tshirt`, 
+    `order_sLeg`, `order_lLeg`, `order_jean`, `order_underwear`, `order_sock`, `order_other`) 
     VALUES ('" . $laundry_id . "','" . $cus_id . "','" . $order_service_type . "','" . $order_washingKg . "',
     '" . $order_isReed . "','" . $order_description . "','" . $order_fixedCost_by_laundry . "',
-    '" . $order_firstRideCost . "','" . $order_secondRideCost . "')";
+    '" . $order_firstRideCost . "','" . $order_secondRideCost . "','" . $order_shirt . "',
+    '" . $order_tshirt  . "','" . $order_sLeg  . "','" . $order_lLeg  . "',
+    '" . $order_jean  . "','" . $order_underwear  . "','" . $order_sock  . "',
+    '" . $order_other  . "')";
 } else {
     $sql = "INSERT INTO `orderdetail`(`laundry_id`, `cus_id`, `order_service_type`, 
     `order_washingKg`, `order_description`, `order_fixedCost_by_laundry`, 
-    `order_firstRideCost`, `order_secondRideCost`) 
+    `order_firstRideCost`, `order_secondRideCost`, `order_shirt`, `order_tshirt`, 
+    `order_sLeg`, `order_lLeg`, `order_jean`, `order_underwear`, `order_sock`, `order_other`) 
     VALUES ('" . $laundry_id . "','" . $cus_id . "','" . $order_service_type . "','" . $order_washingKg . "',
     '" . $order_description . "','" . $order_fixedCost_by_laundry . "',
-    '" . $order_firstRideCost . "','" . $order_secondRideCost . "')";
+    '" . $order_firstRideCost . "','" . $order_secondRideCost . "','" . $order_shirt . "',
+    '" . $order_tshirt  . "','" . $order_sLeg  . "','" . $order_lLeg  . "',
+    '" . $order_jean  . "','" . $order_underwear  . "','" . $order_sock  . "',
+    '" . $order_other  . "')";
 }
 
 $result = mysqli_query($conn, $sql);
@@ -45,8 +61,9 @@ if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
             $sql = "INSERT INTO `order`(`order_detail_id`, `laundry_id`, `cus_id`, `order_status`, 
             `order_source_location1`, `order_source_location2`, `order_dest_location1`, `order_dest_location2`) 
-            VALUES ('" . $row["order_detail_id"] . "','" . $laundry_id . "','" . $cus_id . "','" . $order_status . "','" . $order_source_location . "',
-            '" . $order_dest_location . "','" . $order_dest_location . "','" . $order_source_location  . "')";
+            VALUES ('" . $row["order_detail_id"] . "','" . $laundry_id . "','" . $cus_id . "','" . $order_status . "',
+            '" . $order_source_location . "','" . $order_dest_location . "','" . $order_dest_location . "',
+            '" . $order_source_location  . "')";
         }
         $finalResult = mysqli_query($conn, $sql);
 

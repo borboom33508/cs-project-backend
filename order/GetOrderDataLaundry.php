@@ -10,7 +10,10 @@ $sql = "SELECT `orderdetail`.`order_detail_id`,`order`.`order_status`, `order`.`
 `orderdetail`.`order_service_type`, `orderdetail`.`order_washingKg`, `orderdetail`.`order_isReed`, 
 `orderdetail`.`order_description`, `orderdetail`.`order_fixedCost_by_laundry`, `laundry`.`laundry_hours`,
 `orderdetail`.`order_firstRideCost`, `orderdetail`.`order_secondRideCost`, `orderdetail`.`order_finalCost`,
-`customer`.`cus_name`, `customer`.`cus_phone`, `customer`.`cus_placeName`, `laundry`.`laundry_id` FROM `order` 
+`customer`.`cus_name`, `customer`.`cus_phone`, `customer`.`cus_placeName`, `laundry`.`laundry_id`,
+`orderdetail`.`order_shirt`, `orderdetail`.`order_tshirt`, `orderdetail`.`order_sLeg`, 
+`orderdetail`.`order_lLeg`, `orderdetail`.`order_jean`, `orderdetail`.`order_underwear`, 
+`orderdetail`.`order_sock`, `orderdetail`.`order_other` FROM `order` 
 INNER JOIN `orderdetail` ON `order`.`order_detail_id` = `orderdetail`.`order_detail_id`
 INNER JOIN `laundry` ON `order`.`laundry_id` = `laundry`.`laundry_id`
 INNER JOIN `customer` ON `order`.`cus_id` = `customer`.`cus_id`
@@ -29,7 +32,10 @@ if (mysqli_num_rows($result) > 0) {
             'laundry_hours' => $row["laundry_hours"], 'order_firstRideCost' => $row["order_firstRideCost"], 
             'order_secondRideCost' => $row["order_secondRideCost"], 'cus_name' => $row["cus_name"], 
             'cus_phone' => $row["cus_phone"], 'cus_placeName' => $row["cus_placeName"], 'order_finalCost' => $row["order_finalCost"],
-            'laundry_id' => $row["laundry_id"]
+            'laundry_id' => $row["laundry_id"], 'order_shirt' => $row["order_shirt"], 'order_tshirt' => $row["order_tshirt"], 
+            'order_sLeg' => $row["order_sLeg"], 'order_lLeg' => $row["order_lLeg"], 'order_jean' => $row["order_jean"], 
+            'order_underwear' => $row["order_underwear"], 'order_sock' => $row["order_sock"],
+            'order_other' => $row["order_other"]
         );
     }
     $response['success'] = true;
