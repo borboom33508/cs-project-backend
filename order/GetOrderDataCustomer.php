@@ -12,7 +12,9 @@ $sql = "SELECT `order`.`order_status`, `order`.`order_payment`, `orderdetail`.`o
 `customer`.`cus_credit`, `orderdetail`.`order_firstRideCost`, `orderdetail`.`order_secondRideCost`, 
 `laundry`.`laundry_name`, `laundry`.`laundry_phone`, `orderdetail`.`order_shirt`, `orderdetail`.`order_tshirt`, 
 `orderdetail`.`order_sLeg`, `orderdetail`.`order_lLeg`, `orderdetail`.`order_jean`, `orderdetail`.`order_underwear`, 
-`orderdetail`.`order_sock`, `orderdetail`.`order_other` FROM `order` 
+`orderdetail`.`order_sock`, `orderdetail`.`order_other`, `orderdetail`.`order_reed_tshirt`, `orderdetail`.`order_reed_shirt`,
+`orderdetail`.`order_reed_sLeg`, `orderdetail`.`order_reed_lLeg`, `orderdetail`.`order_reed_jean`, `orderdetail`.`order_reed_underwear`,
+`orderdetail`.`order_reed_sock`, `orderdetail`.`order_reed_other`FROM `order` 
 INNER JOIN `orderdetail` ON `order`.`order_detail_id` = `orderdetail`.`order_detail_id`
 INNER JOIN `laundry` ON `order`.`laundry_id` = `laundry`.`laundry_id`
 INNER JOIN `customer` ON `order`.`cus_id` = `customer`.`cus_id`
@@ -33,7 +35,9 @@ if (mysqli_num_rows($result) > 0) {
             'laundry_name' => $row["laundry_name"], 'laundry_phone' => $row["laundry_phone"], 'order_shirt' => $row["order_shirt"],
             'order_tshirt' => $row["order_tshirt"], 'order_sLeg' => $row["order_sLeg"], 'order_lLeg' => $row["order_lLeg"],
             'order_jean' => $row["order_jean"], 'order_underwear' => $row["order_underwear"], 'order_sock' => $row["order_sock"],
-            'order_other' => $row["order_other"]
+            'order_other' => $row["order_other"], 'order_reed_tshirt' => $row["order_reed_tshirt"], 'order_reed_shirt' => $row["order_reed_shirt"],
+            'order_reed_sLeg' => $row["order_reed_sLeg"], 'order_reed_lLeg' => $row["order_reed_lLeg"], 'order_reed_jean' => $row["order_reed_jean"],
+            'order_reed_underwear' => $row["order_reed_underwear"], 'order_reed_sock' => $row["order_reed_sock"], 'order_reed_other' => $row["order_reed_other"]
         );
     }
     $response['success'] = true;

@@ -24,18 +24,33 @@ $order_jean = $_POST['order_jean'];
 $order_underwear = $_POST['order_underwear'];
 $order_sock = $_POST['order_sock'];
 $order_other = $_POST['order_other'];
+$order_reed_tshirt = $_POST['order_reed_tshirt'];
+$order_reed_shirt = $_POST['order_reed_shirt'];
+$order_reed_sLeg = $_POST['order_reed_sLeg'];
+$order_reed_lLeg = $_POST['order_reed_lLeg'];
+$order_reed_jean = $_POST['order_reed_jean'];
+$order_reed_underwear = $_POST['order_reed_underwear'];
+$order_reed_sock = $_POST['order_reed_sock'];
+$order_reed_other = $_POST['order_reed_other'];
+
+
+
 
 if ($order_isReed) {
     $sql = "INSERT INTO `orderdetail`(`laundry_id`, `cus_id`, `order_service_type`, 
     `order_washingKg`, `order_isReed`, `order_description`, `order_fixedCost_by_laundry`, 
     `order_firstRideCost`, `order_secondRideCost`, `order_shirt`, `order_tshirt`, 
-    `order_sLeg`, `order_lLeg`, `order_jean`, `order_underwear`, `order_sock`, `order_other`) 
+    `order_sLeg`, `order_lLeg`, `order_jean`, `order_underwear`, `order_sock`, `order_other`, `order_reed_tshirt`,
+    `order_reed_shirt`, `order_reed_sLeg`, `order_reed_lLeg`, `order_reed_jean`, `order_reed_underwear`, `order_reed_sock`,
+    `order_reed_other`) 
     VALUES ('" . $laundry_id . "','" . $cus_id . "','" . $order_service_type . "','" . $order_washingKg . "',
     '" . $order_isReed . "','" . $order_description . "','" . $order_fixedCost_by_laundry . "',
     '" . $order_firstRideCost . "','" . $order_secondRideCost . "','" . $order_shirt . "',
     '" . $order_tshirt  . "','" . $order_sLeg  . "','" . $order_lLeg  . "',
-    '" . $order_jean  . "','" . $order_underwear  . "','" . $order_sock  . "',
-    '" . $order_other  . "')";
+    '" . $order_jean  . "','" . $order_underwear  . "','" . $order_sock  . "', 
+    '" . $order_other  . "', '" . $order_reed_tshirt  . "', '" . $order_reed_shirt  . "', '" . $order_reed_sLeg  . "', 
+    '" . $order_reed_lLeg  . "', '" . $order_reed_jean  . "', '" . $order_reed_underwear  . "', '" . $order_reed_sock  . "',
+    '" . $order_reed_other  . "')";
 } else {
     $sql = "INSERT INTO `orderdetail`(`laundry_id`, `cus_id`, `order_service_type`, 
     `order_washingKg`, `order_description`, `order_fixedCost_by_laundry`, 
@@ -46,7 +61,8 @@ if ($order_isReed) {
     '" . $order_firstRideCost . "','" . $order_secondRideCost . "','" . $order_shirt . "',
     '" . $order_tshirt  . "','" . $order_sLeg  . "','" . $order_lLeg  . "',
     '" . $order_jean  . "','" . $order_underwear  . "','" . $order_sock  . "',
-    '" . $order_other  . "')";
+    '" . $order_other  . "'), '" . $order_reed_tshirt  . "', '" . $order_reed_shirt  . "', '" . $order_reed_sLeg  . "', '" . $order_reed_lLeg  . "', 
+    '" . $order_reed_jean  . "', '" . $order_reed_underwear  . "', '" . $order_reed_sock  . "', '" . $order_reed_other  . "'";
 }
 
 $result = mysqli_query($conn, $sql);
